@@ -1,0 +1,100 @@
+<html>
+    <script>
+        alert('Selamat datang ditoko buah kami')
+
+        var listBuahBeli = []
+        var listJumlahBeli = []
+        var listBuah =['apel','anggur','mangga']
+        var listStok =[5,5,5]
+        var listHarga =[1000,2000,3000]
+        var menuUtama
+        var kondisiMenuUtama = true
+        var kondisiMenu = true
+        
+        while(kondisiMenuUtama){
+            do {
+                menuUtama = prompt('Menu Utama \n1.Masuk\n2.exit')
+                if(!(menuUtama==1||menuUtama==2)){
+                    alert('Yang bener dong')
+                }
+            }while (!(menuUtama==1||menuUtama==2));
+            
+            if(menuUtama==1){
+                while(kondisiMenu ){       
+                    var menu = prompt('1.menampilkan buah \n 2.menambah buah \n 3.menghapus buah \n 4.membeli buah \n 5.menu utama ')
+                    if (menu==1){
+                        var output =''
+                        for (x=0;x<listBuah.length;x++){
+                            output+= (x+1)+ '. ' + listBuah[x]+' || '+listStok[x]+' || '+listHarga[x] + '\n'
+                        }
+                        alert (output)
+                    }else if (menu==2){
+                        var buahBaru = prompt('masukkan nama buah')
+                        listBuah.push(buahBaru)
+                        var stokBaru = prompt('masukkan jumlah stok')
+                        listStok.push(stokBaru)
+                        var hargaBaru = prompt('masukkan harga buah')
+                        listHarga.push(hargaBaru)
+                    }else if (menu==3){
+                        var index = listBuah.length-1
+                        alert ((index+1)+ '. ' + listBuah[index]+' || '+listStok[index]+' || '+listHarga[index])
+                        listBuah.pop()
+                        listStok.pop()
+                        listHarga.pop()
+                    }else if (menu==4){
+                        var output = ''
+                        for (x=0;x<listBuah.length;x++){
+                            output+= (x+1)+ '. ' + listBuah[x]+' || '+listStok[x]+' || '+listHarga[x] + '\n'
+                        }
+                        do {
+                            do{
+                                var buahBeli = prompt ('pilih buah yang ingin dibeli \n' + output)
+                            }while (buahBeli-1>listBuah.length-1)
+                            
+                            do{
+                                var jumlahBeli = prompt ('jumalh buah yang ingin dibeli ')
+                            }while (jumlahBeli>listStok[buahBeli-1])
+
+                            listBuahBeli.push (buahBeli)
+                            listJumlahBeli.push (jumlahBeli)
+                            var tambahBuah = prompt ('apakah anda menambah buah yang ingin dibeli \n1. ya \n2. tidak')   
+                            
+                        }while (tambahBuah==1)
+                        var outputBeli = ''
+                        var transaksi = 0
+                        for (x=0;x<listBuahBeli.length;x++){
+                            var indexBuahBeli = listBuahBeli [x]
+                            outputBeli+= (x+1)+ '. ' + listBuah[indexBuahBeli-1]+' || '+listStok[indexBuahBeli-1]+' || '+listHarga[indexBuahBeli-1] + '\n'
+                            transaksi += listHarga[indexBuahBeli-1]*listJumlahBeli[x]
+                        }
+                        alert ('Total Belanja Anda \n'+ outputBeli +'\n' + transaksi )  
+
+                        var jumlahBayar = prompt ('masukkan jumlah uang anda')
+                        while (jumlahBayar<transaksi){
+                            alert ('uang anda kurang')
+                            jumlahBayar = prompt ('masukkan jumlah uang anda')
+                        }
+
+                        if (jumlahBayar>transaksi){
+                            alert ('sisa kembalian anda = '+ (jumlahBayar-transaksi))
+                            alert ('terimakasih sudah belanja ditoko kami')
+                            break
+                        }else {
+                            alert('terimakasih')
+                            break
+                        }
+
+                    }
+                    else if (menu==5){
+                        alert('kembali kemenu utama')
+                        break
+                    }  
+                }
+            }
+            else if (menuUtama==2){
+                alert('terimakasih')
+                break
+            }
+        } 
+    </script>
+</html>
