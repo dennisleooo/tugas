@@ -1,0 +1,132 @@
+<html>
+    <script>
+        alert('Selamat datang ditoko buah kami')
+
+        class Buah {
+            constructor(nama,stok,harga){
+            this.nama = nama
+            this.stok = stok
+            this.harga = harga
+            }
+        }
+
+        class BuahBeli {
+            constructor(indexBuah,jumlahBuah,hargaSatuan){
+                this.indexBuah = indexBuah
+                this.jumlahBuah =jumlahBuah
+                this.hargaSatuan = hargaSatuan
+                this.transaksi = jumlahBuah*hargaSatuan
+            }
+        }
+
+        var cartBuahBeli = []
+        
+        var objekApel = new Buah('apel','5','1000')
+        var objeknggur = new Buah('anggur','6','2000')
+        var objekMangga = new Buah('mangga','7','3000')
+
+        var listObjekBuah = []
+        listObjekBuah.push(objekApel)
+        listObjekBuah.push(objeknggur)
+        listObjekBuah.push(objekMangga)
+
+        console.log( listObjekBuah[0].stok)
+
+        var listBuahBeli = []
+        var listJumlahBeli = []
+        var listBuah =['apel','anggur','mangga']
+        var listStok =[5,6,7]
+        var listHarga =[1000,2000,3000]
+        var menuUtama
+        var kondisiMenuUtama = true
+        var kondisiMenu = true
+        
+        while(kondisiMenuUtama){
+            do {
+                menuUtama = prompt('Menu Utama \n1.Masuk\n2.exit')
+                if(!(menuUtama==1||menuUtama==2)){
+                    alert('Yang bener dong')
+                }
+            }while (!(menuUtama==1||menuUtama==2));
+            
+            if(menuUtama==1){
+                while(kondisiMenu ){       
+                    var menu = prompt('1.menampilkan buah \n 2.menambah buah \n 3.menghapus buah \n 4.membeli buah \n 5.menu utama ')
+                    if (menu==1){
+                        var output =''
+                        for (x=0;x<listObjekBuah.length;x++){
+                        output+= listObjekBuah[x].nama + ' | | ' + listObjekBuah[x].stok + ' | |  Rp.' + listObjekBuah[x].harga + '\n'
+                        }
+                        alert (output)
+                    }else if (menu==2){
+                        var buahBaru
+                        var namaBaru = prompt('masukkan nama buah')
+                        var stokBaru = prompt('masukkan jumlah stok')
+                        var hargaBaru = prompt('masukkan harga buah')
+                        buahBaru = new Buah (namaBaru, stokBaru, hargaBaru)
+                        listObjekBuah.push(buahBaru)
+                    }else if (menu==3){
+                        var index = listObjekBuah.length-1
+                        alert ((index+1)+ '. ' + listObjekBuah[index].nama+' || '+listObjekBuah[index].stok+' || '+listObjekBuah[index].harga)
+                        listObjekBuah.pop()
+                    }else if (menu==4){
+                        var output = ''
+                        for (x=0;x<listObjekBuah.length;x++){
+                            output+= (x+1)+ '. ' + listObjekBuah[x].nama+' || '+listObjekBuah[x].stok+' || '+listObjekBuah[x].harga + '\n'
+                        }
+                        do {
+                            var buahBeli = prompt ('pilih buah yang ingin dibeli \n' + output)
+                            while (buahBeli-1>listObjekBuah.length-1){
+                                alert('pilih buah yang bener dong !')
+                                var buahBeli = prompt ('pilih buah yang ingin dibeli \n' + output)
+                            }
+                            var jumlahBeli = prompt ('jumalh buah yang ingin dibeli ')
+                            while (jumlahBeli>listObjekBuah[buahBeli-1].stok){
+                                alert('stoknya kurang !')
+                                var jumlahBeli = prompt ('jumalh buah yang ingin dibeli ')
+                            }
+                            var buahFix = new BuahBeli (buahBeli-1,jumlahBeli,listObjekBuah[buahBeli-1].harga)
+                            cartBuahBeli.push(buahFix)
+                            // alert(cartBuahBeli[0].transaksi)
+                            var tambahBuah = prompt ('apakah anda menambah buah yang ingin dibeli \n1. ya \n2. tidak')   
+                            
+                        }while (tambahBuah==1)
+                        var outputBeli = ''
+                        var totalTransaksi = 0
+                        for (x=0;x<cartBuahBeli.length;x++){
+                            var indexBuahBeli = cartBuahBeli [x].indexBuah
+                            outputBeli+= (x+1)+ '. ' + listObjekBuah[indexBuahBeli].nama +' || '+cartBuahBeli[x].jumlahBuah
+                            +' || Rp.'+cartBuahBeli[x].hargaSatuan + ' || Rp.'+cartBuahBeli[x].transaksi +'\n'
+                            totalTransaksi += cartBuahBeli[x].transaksi
+                        }
+                        alert ('Total Belanja Anda \n'+ outputBeli +'\n' + 'Rp .'+totalTransaksi )  
+
+                        var jumlahBayar = prompt ('masukkan jumlah uang anda')
+                        while (jumlahBayar<totalTransaksi){
+                            alert ('uang anda kurang')
+                            jumlahBayar = prompt ('masukkan jumlah uang anda')
+                        }
+
+                        if (jumlahBayar>totalTransaksi){
+                            alert ('sisa kembalian anda = '+ (jumlahBayar-totalTransaksi))
+                            alert ('terimakasih sudah belanja ditoko kami')
+                            break
+                        }else {
+                            alert('terimakasih')
+                            break
+                        }
+
+                    }
+                    else if (menu==5){
+                        alert('kembali kemenu utama')
+                        break
+                    }  
+                }
+            }
+            else if (menuUtama==2){
+                alert('terimakasih')
+                break
+            }
+        } 
+    </script>
+</html>
