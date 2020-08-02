@@ -1,0 +1,61 @@
+<form id="form">
+    Masukkan angka 1 : <input id="nomor1" type="number">
+    <br>
+    <br>
+    Masukkan angka 2 : <input id="nomor2" type="number">
+</form>
+    <button onclick="kali()"> Kali X </button>
+
+    <button onclick="bagi()"> Bagi : </button>
+
+    <button onclick="tambah()"> Tambah + </button>
+
+    <button onclick="kurang()"> Kurang - </button>
+    <p></p>
+
+    <button onclick="modulus()"> Modulus % </button>
+
+    <button onclick="pangkat()"> Pangkat ^ </button>
+    <p></p>
+    <p id="tes"> Hasil </p>
+    <script>
+    function kali() {
+        let input1 =document.getElementById("nomor1").value
+        let input2 =document.getElementById("nomor2").value
+        console.log(input1*input2)
+        document.getElementById("tes").innerHTML =' <b>' + input1 + ' X ' + input2 + ' = '+ input1*input2 +'</b>';
+    }
+    function bagi() {
+        let input1 =document.getElementById("nomor1").value
+        let input2 =document.getElementById("nomor2").value
+        console.log(input1/input2)
+        document.getElementById("tes").innerHTML =' <b>' + input1 + ' : ' + input2 + ' = '+ input1/input2 +'</b>';
+
+    }
+    function tambah() {
+        let input1 =parseInt(document.getElementById("nomor1").value)
+        let input2 =parseInt(document.getElementById("nomor2").value)
+        console.log(input1+input2)
+        document.getElementById("tes").innerHTML =' <b>' + input1 + ' + ' + input2 + ' = '+ (input1+input2) +'</b>';
+    }
+    function kurang() {
+        let input1 =parseInt(document.getElementById("nomor1").value)
+        let input2 =parseInt(document.getElementById("nomor2").value)
+        console.log(input1-input2)
+        document.getElementById("tes").innerHTML =' <b>' + input1 + ' - ' + input2 + ' = '+ (input1-input2) +'</b>';
+
+    }
+    function modulus() {
+        let input1 =document.getElementById("nomor1").value
+        let input2 =document.getElementById("nomor2").value
+        console.log(input1%input2)
+        document.getElementById("tes").innerHTML =' <b>' + input1 + ' % ' + input2 + ' = '+ input1%input2 +'</b>';
+    }
+    function pangkat() {
+        let input1 =document.getElementById("nomor1").value
+        let input2 =document.getElementById("nomor2").value
+        console.log(' Hasil ' + input1 +'<sup>'+ input2 +'</sup>'+ ' = ' ) + Math.pow(input1, input2)
+        document.getElementById("tes").innerHTML =' <b>' +(' Hasil ' + input1 +'<sup>'+ input2 +'</sup>'+ ' = ' ) + Math.pow(input1, input2) +'</b>';
+    }
+
+    </script>

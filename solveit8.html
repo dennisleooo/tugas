@@ -1,0 +1,18 @@
+<form id="form">
+    Ketik Kalimat : <input id="kata" type="text">
+    <br>
+    <br>
+    Karakter yang dicari : <input id="cari"type="text">
+</form>
+    <button onclick="fungsiKu()"> Cari </button>
+    <p id="tes"> Hasil </p>
+    <script>
+    function fungsiKu() {
+        let input1 =document.getElementById("kata").value
+        let input2 =document.getElementById("cari").value
+        var hasil = (input1.split(input2))
+        document.getElementById("tes").innerHTML =' <b>' + (hasil.length-1) +'</b>';
+    console.log(input1)
+    console.log(input2)
+}
+    </script>
