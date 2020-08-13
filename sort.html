@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .cus{
+            border:1px solid black;
+            width: 250px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="cus">
+            <table>
+                    <h1>input manusia</h1>
+                    <label for="name"> Nama : </label>
+                    <input type="text" id="nama" name="nama"><br><br>
+                    
+                    <label for="lname">Usia : </label>
+                    <input type="number" id="usia" name="usia"><br><br>
+                    
+                    <label for="lname">Gender : </label>
+                    <input type="radio" id="pria" name="gender" value="Pria">
+                    <label for="male"> Pria </label>
+                    <input type="radio" id="wanita" name="gender" value="Wanita">
+                    <label for="female"> Wanita </label><br><br>
+                    
+                    <label for="Job"> Pekerjaan : </label>
+                    <input type="text" id="pekerjaan" name="pekerjaan"><br><br>
+                    <input type="button" value="Submit" onclick="onsubmitClick()"><br><br>
+            </table>
+        </div>
+
+        <!-- button -->
+        <p><input type="button" onclick="onnamaClick()" value="Nama" id="nama">
+        <input type="button" onclick="onusiaClick()" value="Usia" id="usia">
+        <input type="button" onclick="ongenderClick()" value="Gender" id="gender">
+        <input type="button" onclick="onpekerjaanClick()"value="Pekerjaan" id="pekerjaan">
+
+        <!-- table manusia -->
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 10px;
+                }
+        </style>
+        <table>
+            <thead>
+                <tr>
+                <th> No </th>
+                <th> Nama </th> 
+                <th> Usia </th> 
+                <th> Gender </th>
+                <th> Pekerjaan </th>
+                </tr>
+            </thead>
+            <tbody id="manusia"></tbody>
+        </table>
+    </center>  
+</body>
+<script src="./sort.js"> </script>
+</html>
